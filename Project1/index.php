@@ -1,8 +1,4 @@
-//**remember**
-//Database "stocks"
-//Table "stock"
-
-
+a
 <?php
 //database server type location, database name
 $data_source_name = 'mysql:host=localhost;dbname=stocks';
@@ -12,7 +8,7 @@ $password = 'test';
 
 try {
     $database = new PDO($data_source_name, $username, $password);
-    echo "<p>Database connection successful";
+    echo "<p>Database connection successful</p>";
 
     $action = htmlspecialchars(filter_input(INPUT_POST, "action"));
     
@@ -61,7 +57,7 @@ try {
             
             //value binding in PDO protects against sql injection
             $statement = $database->prepare($query);
-            $statement->bindvalue(":symbol", $symbol);
+            $statement->bindValue(":symbol", $symbol);
             
             $statement->execute();
 
@@ -122,7 +118,7 @@ try {
         <h2>Add Stock</h2>
         <form action="index.php" method="post">
             <label>Symbol:</label>
-            <input type="text" name=symbol"/><br>
+            <input type="text" name="symbol"/><br>
             <label>Name:</label>
             <input type="text" name="name"/><br>
             <label>Current Price:</label>
@@ -137,10 +133,10 @@ try {
         <form action="index.php" method=post">
             <label>Symbol:</label>
             <input type="text" name="symbol"/><br>
-           <!-- <label>Name:</label> 
+           <label>Name:</label> 
             <input type="text" name="name"/><br>
             <label>Current Price:</label>
-            <input type="text" name="current_price"/><br> --->
+            <input type="text" name="current_price"/><br>
             <input type="hidden" name='action' value='update'/><br>
             <label>&nbsp;</label>
             <input type="submit" value="Update Stock"/>
@@ -157,3 +153,4 @@ try {
     
     </body>
 </html>
+
